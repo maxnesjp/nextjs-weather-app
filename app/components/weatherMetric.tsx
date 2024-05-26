@@ -1,5 +1,5 @@
 import React from "react";
-import { WeatherMetricsProps } from "../../../types";
+import { WeatherMetricsProps } from "@/types";
 
 const WeatherMetric = ({ title, metric, type }: WeatherMetricsProps) => {
   return (
