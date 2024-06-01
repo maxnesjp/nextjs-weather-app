@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { WeatherCardProps, WeatherResponse } from "@/types";
 import WeatherMetric from "./weatherMetric";
-import { sampleData } from "@/constants";
+import { cities, sampleData } from "@/constants";
+import CustomCombobox from "./customCombobox";
 
 // Define a default object for weatherData if it is null
 const defaultWeatherData: WeatherResponse = {
@@ -87,24 +88,25 @@ const WeatherCard = ({ defaultCity }: WeatherCardProps) => {
     fetchData(city);
   };
 
+  const onCitySelectChange = (newCity: string) => {
+    setCity(newCity);
+  };
+
   return (
     <>
       <div className="bg-white p-4 rounded-lg shadow-md text-black">
-        <div className="mb-4 flex flex-wrap">
-          <div className="w-full sm:w-1/2 ">
-            <input
-              type="text"
-              value={city}
-              onChange={handleCityChange}
-              className="px-3 py-2 border-2 rounded-md mr-2 focus:outline-none text-center w-full size-full sm:text-left"
-              placeholder="Enter city name"
-            />
+        <div className="flex flex-wrap mb-4">
+          <div className="w-full sm:w-1/2 h-10">
+            <CustomCombobox
+              options={cities}
+              onChange={onCitySelectChange}
+              selected={city || city[0]}
+            ></CustomCombobox>
           </div>
-          <a href=""></a>
-          <div className="w-full sm:w-1/2 mt-1 sm:mt-0 sm:pl-1">
+          <div className="w-full sm:w-1/2 h-10">
             <button
               onClick={handleSubmit}
-              className="bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white focus:outline-none w-full size-full"
+              className="mt-1 sm:ml-1 sm:mt-0 size-full bg-blue-500 py-2 rounded-md hover:bg-blue-600 hover:text-white focus:outline-none "
             >
               Get Weather
             </button>

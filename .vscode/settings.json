@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/e1564602-fe04-4ad0-9947-a9618859b597/resourceGroups/maxterious-rg/providers/Microsoft.Web/sites/maxterious-weather-app",
+    "appService.deploySubpath": "."
+}

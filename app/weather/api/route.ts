@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
+import { sampleData } from '@/constants';
+
+const isActive = true;
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,10 +16,16 @@ export async function POST(req: NextRequest) {
     if (!apiKey) {
       throw new Error('API key is not set in environment variables');
     }
-
-    const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
-    const response = await axios.get(apiUrl);
-    const data = response.data;
+    let data;
+    if (isActive) {
+      const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+      const response = await axios.get(apiUrl);
+      
+      data = response.data;
+    } else {
+      data = sampleData;
+    }
+   
 
     return NextResponse.json(data);
   } catch (error) {

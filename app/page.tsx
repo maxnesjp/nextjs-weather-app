@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Footer from "./components/layout/footer";
 
 const HomePage = () => {
   return (
