@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 import { sampleData } from '@/constants';
 
-const isActive = false;
+const isActive = true;
 
 export async function POST(req: NextRequest) {
   try {
