@@ -10,7 +10,10 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-2 md:mb-0">
-            <h2 className="text-2xl font-bold">Weather App</h2>
+            <h2 className="text-2xl font-bold">
+              Weather App using React, Next, Typescript and .NET: Azure
+              functions
+            </h2>
           </div>
           <div className="flex space-x-6 mb-2 md:mb-0"></div>
           <div className="flex space-x-6">
