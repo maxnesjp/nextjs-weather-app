@@ -47,6 +47,7 @@ interface WeatherResponse {
 
 export interface ButtonProps {
     title: string;
+    onClick: (event: React.FormEvent) => void;
 }
 
 export interface WeatherMetricsProps {

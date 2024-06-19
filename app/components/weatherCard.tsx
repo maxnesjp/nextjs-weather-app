@@ -59,12 +59,11 @@ const WeatherCard = ({ defaultCity }: WeatherCardProps) => {
 
   const fetchData = async (city: string) => {
     try {
-      const response = await fetch("/weather/api", {
-        method: "POST",
+      const response = await fetch(`/weather/api?city=${city}`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ city }),
       });
 
       if (response.ok) {
@@ -94,7 +93,7 @@ const WeatherCard = ({ defaultCity }: WeatherCardProps) => {
 
   return (
     <>
-      <div className="bg-white p-4 rounded-lg shadow-md text-black">
+      <div className="bg-white rounded-lg p-4 shadow-md text-black">
         <div className="flex flex-wrap mb-4">
           <div className="w-full sm:w-1/2 h-10">
             <CustomCombobox
