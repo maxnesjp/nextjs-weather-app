@@ -24,15 +24,22 @@ const Weather = () => {
 
   const SaveCustomer = async (event: React.FormEvent) => {
     try {
+      console.log(city);
       const response = await fetch("/weather/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ city }),
+        body: JSON.stringify({ city, email }),
       });
       setIsSent(true);
-      response.ok ? setIsSuccess(true) : setIsSuccess(false);
+      console.log(city);
+      if (response.ok) {
+        setIsSuccess(true);
+      } else {
+        setIsSuccess(false);
+      }
+
       console.log(response.json);
       setTimeout(() => {
         setIsSent(false);
@@ -68,26 +75,28 @@ const Weather = () => {
         </div>
         <div className="w-full sm:w-1/2 xl:w-1/3 p-2 mt-3 bg-white rounded-lg">
           <div>
-            <p className="text-base w-full sm:w-1/2">Enter Email</p>
+            <p className="text-base w-full">Enter Email</p>
             <input
-              className="w-full sm:w-1/2 bg-slate-200 rounded-sm"
+              className="w-full bg-slate-100 rounded-sm"
               value={email}
               title="customer email"
               placeholder="example@123.com"
               onChange={handleEmailChange}
             ></input>
           </div>
-          <div>
-            <p className="text-base w-full sm:w-1/2">Enter City</p>
+          <div className="mt-1">
+            <p className="text-base w-full">Enter City</p>
             <input
-              className="w-full sm:w-1/2 bg-slate-200 rounded-sm"
+              className="w-full  bg-slate-100 rounded-sm"
               value={city}
               title="customer city"
               placeholder="Tokyo"
               onChange={handleCityChange}
             ></input>
           </div>
-          <CustomButton title="Save" onClick={SaveCustomer} />
+          <div className="mt-2">
+            <CustomButton title="Save" onClick={SaveCustomer} />
+          </div>
         </div>
       </div>
       <div className="flex flex-wrap mt-3">

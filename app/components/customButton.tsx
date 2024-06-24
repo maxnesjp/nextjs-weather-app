@@ -3,11 +3,12 @@ import { ButtonProps } from "@/types";
 
 const CustomButton = ({ title, onClick }: ButtonProps) => {
   return (
-    <div>
-      <button className="border-2 border-spacing-2" onClick={onClick}>
-        {title}
-      </button>
-    </div>
+    <button
+      className="size-full bg-blue-500 py-2 rounded-md hover:bg-blue-600 hover:text-white focus:outline-none "
+      onClick={onClick}
+    >
+      {title}
+    </button>
   );
 };
 

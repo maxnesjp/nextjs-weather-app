@@ -4,6 +4,7 @@ import { WeatherCardProps, WeatherResponse } from "@/types";
 import WeatherMetric from "./weatherMetric";
 import { cities, sampleData } from "@/constants";
 import CustomCombobox from "./customCombobox";
+import CustomButton from "./customButton";
 
 // Define a default object for weatherData if it is null
 const defaultWeatherData: WeatherResponse = {
@@ -94,21 +95,19 @@ const WeatherCard = ({ defaultCity }: WeatherCardProps) => {
   return (
     <>
       <div className="bg-white rounded-lg p-4 shadow-md text-black">
-        <div className="flex flex-wrap mb-4">
-          <div className="w-full sm:w-1/2 h-10">
+        <div className="flex flex-col sm:flex-row  mb-4">
+          <div className="basis-full sm:basis-1/2 h-10 mb-1 mr-0 sm:mr-1 sm:mb-0 ">
             <CustomCombobox
               options={cities}
               onChange={onCitySelectChange}
               selected={city || city[0]}
             ></CustomCombobox>
           </div>
-          <div className="w-full sm:w-1/2 h-10">
-            <button
+          <div className="basis-full sm:basis-1/2 mt-0 h-10">
+            <CustomButton
               onClick={handleSubmit}
-              className="mt-1 sm:ml-1 sm:mt-0 size-full bg-blue-500 py-2 rounded-md hover:bg-blue-600 hover:text-white focus:outline-none "
-            >
-              Get Weather
-            </button>
+              title="Get Weather"
+            ></CustomButton>
           </div>
         </div>
         <div className="bg-white">
